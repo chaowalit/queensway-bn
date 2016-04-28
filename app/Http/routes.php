@@ -19,3 +19,5 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/branch', 'BranchController@index');
