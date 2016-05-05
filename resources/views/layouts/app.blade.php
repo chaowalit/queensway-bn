@@ -13,10 +13,10 @@
   </head>
 
 
-  <body class="nav-md">
-    <div class="container body">
+  <body class="nav-md" style="background: #F7F7F7;">
+    <div class="container body" style="height: 100%;min-height: 100%;">
       <div class="main_container">
-        <div class="col-md-3 left_col">
+        <div class="col-md-3 left_col" style="background: #2A3F54;height: 100%;">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Administrator</span></a>
@@ -127,7 +127,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" style="min-height: 680px;" id="main_content_view">
+        <div class="right_col" role="main" style="height: 100%;min-height: 100%;" id="main_content_view">
 
             @yield('content')
 
@@ -135,7 +135,7 @@
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
+        <footer class="navbar-default navbar-fixed-bottom" style="background: #F7F7F7;">
           <div class="pull-right">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
@@ -147,20 +147,25 @@
 
     @include('layouts.footer')
 
+    <script>
+      $(document).ready(function() {
+          $("#btn_update_branch").click(function(){
+              if(confirm('คุณแน่ใจหรือไม่ ที่จะอัพเดตข้อมูลสาขานี้')){
+                  $("#form_update_branch").submit();
+              }
+          });
+      });
+    </script>
+
     <!-- jQuery Smart Wizard -->
     <script>
       $(document).ready(function() {
-        // $('#wizard').smartWizard();
-        //
-        // $('#wizard_verticle').smartWizard({
-        //   transitionEffect: 'slide'
-        // });
-        //
-        // $('.buttonNext').addClass('btn btn-success');
-        // $('.buttonPrevious').addClass('btn btn-primary');
-        // $('.buttonFinish').addClass('btn btn-default');
+          //$("#main_content_view").attr('style', 'height: 100%;min-height: 100%;');
       });
     </script>
     <!-- /jQuery Smart Wizard -->
+    <style>
+
+    </style>
   </body>
 </html>

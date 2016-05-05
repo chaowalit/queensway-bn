@@ -16,6 +16,18 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{{ asset('assets/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+    <script>
+        $( document ).ready(function(){
+            $("#btn_page_search_customer").click(function(){
+                window.location.href = "{{ url('search_customer') }}";
+            });
+        });
+    </script>
   </head>
 
   <body style="background:#F7F7F7;">
@@ -48,7 +60,7 @@
               </div>
               <div>
                 <button class="btn btn-default submit">ลงชื่อเข้าใช้งาน</button>
-
+                <button type="button" class="btn btn-default" id="btn_page_search_customer">ค้นหาลูกค้า</button>
               </div>
               <div class="clearfix"></div>
               <div class="separator">

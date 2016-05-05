@@ -15,9 +15,14 @@ Route::get('/', function () {
     //return view('welcome');
     return redirect('dashboard');
 });
+Route::get('/search_customer', function () {
+    return view('welcome');
+});
 
 Route::auth();
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('dashboard', 'DashboardController@index');
 
-Route::get('/branch', 'BranchController@index');
+Route::get('branch', 'BranchController@index');
+Route::post('branch/show_edit_branch', 'BranchController@show_edit_branch');
+Route::post('branch/update_edit_branch', 'BranchController@update_edit_branch');

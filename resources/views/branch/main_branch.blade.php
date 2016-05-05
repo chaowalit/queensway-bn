@@ -22,7 +22,7 @@
     <div class="row">
 
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel" style="height:600px;">
+        <div class="x_panel" style="height:auto;">
           <div class="x_title">
             <h2>จัดการสาขา</h2>
             <ul class="nav navbar-right panel_toolbox">
@@ -32,6 +32,14 @@
           </div>
 
 		  <div class="x_content">
+              @if(session('status'))
+              <div class="alert alert-{{ (session('status') == 200)? 'success':'danger' }} alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <strong>แจ้งเตือน : </strong> {{ session('msg') }}
+              </div>
+              @endif
+
 			  <?php //dump($branch); ?>
 			  <table class="table table-striped projects">
                       <thead>
@@ -51,7 +59,7 @@
                           <td>
                             <a>{{ $val['company_name'] }}</a>
                             <br>
-                            <small>สร้างเมื่อ {{ date("d-m-Y H:i:s", strtotime($val['created_at'])) }}</small>
+                            <small>URL : {{ $val['url_branch'] }}</small>
                           </td>
                           <td>
                             {{ $val['branch_no'] }}
@@ -63,7 +71,21 @@
                             <button type="button" class="btn btn-success btn-xs">เชื่อมต่อแล้ว</button>
                           </td>
                           <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> จัดการข้อมูล </button>
+                            <form action="{{ url('branch/show_edit_branch') }}" method="post">
+                                <input type="hidden" name="id" value="{{ $val['id'] }}">
+                                <input type="hidden" name="company_name" value="{{ $val['company_name'] }}">
+                                <input type="hidden" name="branch_no" value="{{ $val['branch_no'] }}">
+                                <input type="hidden" name="branch_name" value="{{ $val['branch_name'] }}">
+                                <input type="hidden" name="first_name" value="{{ $val['first_name'] }}">
+                                <input type="hidden" name="last_name" value="{{ $val['last_name'] }}">
+                                <input type="hidden" name="address" value="{{ $val['address'] }}">
+                                <input type="hidden" name="tel" value="{{ $val['tel'] }}">
+                                <input type="hidden" name="url_branch" value="{{ $val['url_branch'] }}">
+                                <input type="hidden" name="comment" value="{{ $val['comment'] }}">
+                                {!! csrf_field() !!}
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> จัดการข้อมูล </button>
+                            </form>
+
                           </td>
                         </tr>
 						@endforeach
