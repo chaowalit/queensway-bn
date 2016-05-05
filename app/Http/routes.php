@@ -16,8 +16,9 @@ Route::get('/', function () {
     return redirect('dashboard');
 });
 Route::get('/search_customer', function () {
-    return view('welcome');
+    return view('form_search_customer');
 });
+Route::get('result_search_customer', 'HomeController@result_search_customer');
 
 Route::auth();
 
@@ -26,3 +27,4 @@ Route::get('dashboard', 'DashboardController@index');
 Route::get('branch', 'BranchController@index');
 Route::post('branch/show_edit_branch', 'BranchController@show_edit_branch');
 Route::post('branch/update_edit_branch', 'BranchController@update_edit_branch');
+Route::post('branch/update_login_branch', 'BranchController@update_login_branch');

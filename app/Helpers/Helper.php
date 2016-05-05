@@ -5,6 +5,25 @@ if (!function_exists('getPasswordApiV1')) {
 	}
 }
 
+if(!function_exists('curlGet')){
+	function curlGet($url = ''){
+		// Get cURL resource
+		$curl = curl_init();
+		// Set some options - we are passing in a useragent too here
+		curl_setopt_array($curl, array(
+		    CURLOPT_RETURNTRANSFER => 1,
+		    CURLOPT_URL => $url,
+		    CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+		));
+		// Send the request & save response to $resp
+		$resp = curl_exec($curl);
+		// Close request to clear up some resources
+		curl_close($curl);
+
+		return $resp;
+	}
+}
+
 if (!function_exists('curlPost')) {
 	function curlPost($url = '', $param = array()) {
 		$str_param = '';

@@ -82,6 +82,7 @@
                                 <input type="hidden" name="tel" value="{{ $val['tel'] }}">
                                 <input type="hidden" name="url_branch" value="{{ $val['url_branch'] }}">
                                 <input type="hidden" name="comment" value="{{ $val['comment'] }}">
+                                <input type="hidden" name="email" value="{{ $val['email'] }}">
                                 {!! csrf_field() !!}
                                 <button class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> จัดการข้อมูล </button>
                             </form>

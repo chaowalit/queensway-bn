@@ -31,13 +31,13 @@
               </p>
               <div class="mid_center">
                 <h3>ค้นหา</h3>
-                <form>
+                <form action="{{ url('result_search_customer') }}">
                   <div class="col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
+                      <input type="text" name="keyword" id="keyword" class="form-control" placeholder="กรุณาใส่หมายบัตร ปปช." required>
                       <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">Go!</button>
-                          </span>
+                            <button class="btn btn-default" type="submit">ค้นหา</button>
+                      </span>
                     </div>
                   </div>
                 </form>

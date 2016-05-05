@@ -76,5 +76,26 @@ class BranchController extends QwcAdminController{
 			return redirect('branch');
 		}
 	}
+	public function update_login_branch(Request $request){
+		$param = [
+			"password" => getPasswordApiV1(),
+			"id" => $request->get('id', ''),
+			"email" => $request->get('email', ''),
+			"new_password" => $request->get('new_password', ''),
+		];
+		$url = $request->get('url_branch', '') . "public/api/v1/changePasswordCompany";
+		$result = curlPost($url, $param);
+		$res = json_decode($result, true);
+
+		if($res['header']['code'] == 200){
+			$request->session()->flash('status', 200);
+			$request->session()->flash('msg', 'ระบบได้ทำการอัพเดตข้อมูลสาขาที่ url : '.$request->get('url_branch', '').'public');
+			return redirect('branch');
+		}else{
+			$request->session()->flash('status', 400);
+			$request->session()->flash('msg', 'ระบบไม่สามารถทำการอัพเดตข้อมูลสาขาที่ url : '.$request->get('url_branch', '').'public กรุณาลองใหม่อีกครั้ง');
+			return redirect('branch');
+		}
+	}
 }
 ?>

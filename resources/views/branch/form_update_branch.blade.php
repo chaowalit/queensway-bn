@@ -135,11 +135,11 @@
                     <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                       <p></p>
                       <div class="col-md-6 col-xs-12">
-                          <form class="form-horizontal form-label-left">
+                          <form action="{{ url('branch/update_login_branch') }}" method="POST" id="form_update_user_login_branch" class="form-horizontal form-label-left">
                               <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                  <input type="text" class="form-control has-feedback-left" id="" placeholder="Email">
+                                  <input type="text" class="form-control has-feedback-left" value="{{ $branch['email'] }}" name="email" id="email" placeholder="Email">
                                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                               </div>
@@ -147,15 +147,19 @@
                               <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">New Password</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                  <input type="password" class="form-control has-feedback-left" id="" placeholder="Password">
+                                  <input type="password" class="form-control has-feedback-left" name="new_password" id="new_password" placeholder="Password">
                                   <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                               </div>
                               <div class="ln_solid"></div>
                               <div class="form-group">
                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+
+                                    <input type="hidden" name="url_branch" id="url_branch" value="{{ $branch['url_branch'] }}" required="required" class="form-control col-md-7 col-xs-12" readonly="true">
+                                    <input type="hidden" name="id" value="{{ $branch['id'] }}">
+    								{!! csrf_field() !!}
                                   <a href="{{ url('branch') }}" class="btn btn-primary">ย้อนกลับ</a>
-                                  <button type="button" class="btn btn-success">เปลี่ยนแปลงข้อมูล</button>
+                                  <button type="button" id="btn_update_user_login_branch" class="btn btn-success">เปลี่ยนแปลงข้อมูล</button>
                                 </div>
                               </div>
                           </form>

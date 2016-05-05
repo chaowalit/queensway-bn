@@ -154,13 +154,19 @@
                   $("#form_update_branch").submit();
               }
           });
+
+          $("#btn_update_user_login_branch").click(function(){
+              if(confirm('คุณแน่ใจหรือไม่ ที่จะอัพเดตข้อมูลการ login สาขานี้')){
+                  $("#form_update_user_login_branch").submit();
+              }
+          });
       });
     </script>
 
     <!-- jQuery Smart Wizard -->
     <script>
       $(document).ready(function() {
-          //$("#main_content_view").attr('style', 'height: 100%;min-height: 100%;');
+
       });
     </script>
     <!-- /jQuery Smart Wizard -->
