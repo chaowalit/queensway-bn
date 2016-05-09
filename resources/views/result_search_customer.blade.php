@@ -37,12 +37,14 @@
 				  </div>
 				  <div class="col-md-8 col-sm-8 col-xs-8">
 				  <!-- start accordion -->
+                  <?php //dump($result); ?>
 				  <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                    @foreach($result as $key => $val)
 					<div class="panel">
-					  <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-						<h4 class="panel-title">สาขาที่ #1 สาขาพระรามเก้า</h4>
+					  <a class="panel-heading {{ (($key+1) == 1)? "":"collapsed" }}" role="tab" id="" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne{{ $key+1 }}" aria-expanded="{{ (($key+1) == 1)? "true":"false" }}" aria-controls="collapseOne">
+						<h4 class="panel-title">สาขาที่ #{{ $key+1 }} {{ $val['data_branch']['branch_name'] }}</h4>
 					  </a>
-					  <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true">
+					  <div id="collapseOne{{ $key+1 }}" class="panel-collapse collapse {{ (($key+1) == 1)? "in":"" }}" role="tabpanel" aria-labelledby="headingOne" aria-expanded="{{ (($key+1) == 1)? "true":"false" }}">
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-6 col-sm-6 col-xs-6">
@@ -50,31 +52,23 @@
 									<table class="table table-striped">
 		  							<thead>
 		  							  <tr>
-		  								<th>#</th>
-		  								<th>First Name</th>
-		  								<th>Last Name</th>
-		  								<th>Username</th>
+		  								<th></th>
+
 		  							  </tr>
 		  							</thead>
 		  							<tbody>
 		  							  <tr>
-		  								<th scope="row">1</th>
-		  								<td>Mark</td>
-		  								<td>Otto</td>
-		  								<td>@mdo</td>
+		  								<th scope="row">
+                                            ชื่อบริษัท : {{ $val['data_branch']['company_name'] }}<br>
+                                            รหัสสาขา : {{ $val['data_branch']['branch_no'] }}, ชื่อสาขา : {{ $val['data_branch']['branch_name'] }}<br>
+                                            ชื่อผู้รับผิดชอบ : {{ $val['data_branch']['first_name'] }} {{ $val['data_branch']['last_name'] }}<br>
+                                            ที่อยู่ : {{ $val['data_branch']['address'] }}<br>
+                                            โทร : {{ $val['data_branch']['tel'] }} <br>
+                                            หมายเหตุ : {{ $val['data_branch']['comment'] }}
+                                        </th>
+
 		  							  </tr>
-		  							  <tr>
-		  								<th scope="row">2</th>
-		  								<td>Jacob</td>
-		  								<td>Thornton</td>
-		  								<td>@fat</td>
-		  							  </tr>
-		  							  <tr>
-		  								<th scope="row">3</th>
-		  								<td>Larry</td>
-		  								<td>the Bird</td>
-		  								<td>@twitter</td>
-		  							  </tr>
+
 		  							</tbody>
 		  						  </table>
 			  				  	</div>
@@ -83,31 +77,25 @@
 									<table class="table table-striped">
 		  							<thead>
 		  							  <tr>
-		  								<th>#</th>
-		  								<th>First Name</th>
-		  								<th>Last Name</th>
-		  								<th>Username</th>
+		  								<th></th>
+
 		  							  </tr>
 		  							</thead>
 		  							<tbody>
 		  							  <tr>
-		  								<th scope="row">1</th>
-		  								<td>Mark</td>
-		  								<td>Otto</td>
-		  								<td>@mdo</td>
+		  								<th scope="row">
+                                            รหัสลูกค้า : {{ $val['customer']['customer_number'] }} ,
+                                            {{ $val['customer']['prefix'] }} {{ $val['customer']['full_name'] }} ({{ $val['customer']['nickname'] }})<br>
+                                            หมายเลขประจำตัวประชาชน : {{ $val['customer']['thai_id'] }}<br>
+                                            ที่อยู่ : {{ $val['customer']['address'] }}<br>
+                                            โทร : {{ $val['customer']['tel'] }}<br>
+                                            Email : {{ $val['customer']['email'] }}, วันเกิด : {{ $val['customer']['birthday'] }}<br>
+                                            ประวัติการแพ้ยา : {{ $val['customer']['intolerance_history'] }}<br>
+                                            หมายเหตุ : {{ $val['customer']['comment'] }}<br>
+                                        </th>
+
 		  							  </tr>
-		  							  <tr>
-		  								<th scope="row">2</th>
-		  								<td>Jacob</td>
-		  								<td>Thornton</td>
-		  								<td>@fat</td>
-		  							  </tr>
-		  							  <tr>
-		  								<th scope="row">3</th>
-		  								<td>Larry</td>
-		  								<td>the Bird</td>
-		  								<td>@twitter</td>
-		  							  </tr>
+
 		  							</tbody>
 		  						  </table>
 			  				  	</div>
@@ -117,31 +105,29 @@
 								<table class="table table-striped">
 								<thead>
 								  <tr>
-									<th>#</th>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Username</th>
+									<th>สถานะ</th>
+									<th>ประเภทคอร์ส</th>
+									<th>เล่มที่ใบเสร็จ</th>
+									<th>เลขที่ใบเสร็จ</th>
+                                    <th>ราคาทั้งหมด</th>
+                                    <th>ยอดชำระ</th>
+                                    <th>ยอดค้างชำระ</th>
+                                    <th>Consultant</th>
 								  </tr>
 								</thead>
 								<tbody>
+                                    @foreach($val['all_course'] as $val)
 								  <tr>
-									<th scope="row">1</th>
-									<td>Mark</td>
-									<td>Otto</td>
-									<td>@mdo</td>
+									<th scope="row">{{ $val['status_course'] }}</th>
+									<td>{{ $val['type_course'] == 'credit'? "วงเงิน":"รายคอร์ส" }}</td>
+									<td>{{ $val['book_no'] }}</td>
+									<td>{{ $val['number_no'] }}</td>
+                                    <th>{{ $val['total_price'] }}</th>
+                                    <th>{{ $val['payment_amount_total'] }}</th>
+                                    <th>{{ $val['accrued_expenses'] }}</th>
+                                    <th>{{ $val['consultant'] }}</th>
 								  </tr>
-								  <tr>
-									<th scope="row">2</th>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td>@fat</td>
-								  </tr>
-								  <tr>
-									<th scope="row">3</th>
-									<td>Larry</td>
-									<td>the Bird</td>
-									<td>@twitter</td>
-								  </tr>
+                                  @endforeach
 								</tbody>
 							  </table>
 							</div>
@@ -149,30 +135,13 @@
 						</div>
 					  </div>
 					</div>
-					<div class="panel">
-					  <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo">
-						<h4 class="panel-title">สาขาที่ #2 สาขาพระรามเก้า</h4>
-					  </a>
-					  <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
-						<div class="panel-body">
-						  <p><strong>Collapsible Item 2 data</strong>
-						  </p>
-						  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-						</div>
-					  </div>
-					</div>
-					<div class="panel">
-					  <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
-						<h4 class="panel-title">สาขาที่ #3 สาขาพระรามเก้า</h4>
-					  </a>
-					  <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
-						<div class="panel-body">
-						  <p><strong>Collapsible Item 3 data</strong>
-						  </p>
-						  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
-						</div>
-					  </div>
-					</div>
+                    @endforeach
+                    @if(count($result) == 0)
+                    <div class="text-center text-center">
+                      <h1 class="">ไม่พบข้อมูลลูกค้านี้</h1>
+
+                    </div>
+                    @endif
 				  </div>
 				  <!-- end of accordion -->
 			  </div>

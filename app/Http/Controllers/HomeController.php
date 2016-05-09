@@ -28,17 +28,27 @@ class HomeController extends Controller
         return view('home');
     }
     public function result_search_customer(Request $request){
+        $data = array();
         $keyword = $request->get('keyword', null);
 
         $QwcBranch = new QwcBranch;
 		$result = $QwcBranch->getQwcBranchAll();
         //dump($result);
-        $url = "http://rm9.qwc-th.com/public/api/v1/search_customer?keyword=1670700183593";
-        $res = curlGet($url);
-        //dd(json_decode($res, true));
-        $data = array(
+        foreach($result as $val){
+            $url = $val->url_branch."public/api/v1/search_customer?keyword=".$keyword;
+            $res = json_decode(curlGet($url), true);
 
-        );
+            if($res['header']['code'] == 200){
+                $temp = $res['data']['item'];
+                $temp['url_branch'] = $val->url_branch;
+                $data_1[] = $temp;
+            }
+        }
+        $data['result'] = (isset($data_1))? $data_1:[];
+        // $url = "http://rm9.qwc-th.com/public/api/v1/search_customer?keyword=1670700183593";
+        // $res = curlGet($url);
+        // dd(json_decode($res, true));
+        //dd($data);
         return view('result_search_customer', $data);
     }
 }
