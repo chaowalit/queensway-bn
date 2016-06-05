@@ -31,11 +31,12 @@
               </p>
               <div class="mid_center">
                 <h3>ค้นหา</h3>
-                <form action="{{ url('result_search_customer') }}">
+                <form action="{{ url('list_search_customer') }}" method="post">
                   <div class="col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
-                      <input type="text" name="keyword" id="keyword" class="form-control" placeholder="กรุณาใส่หมายบัตร ปปช." required>
+                      <input type="text" name="keyword" id="keyword" class="form-control" placeholder="กรุณากรอกคำค้นหา" required>
                       <span class="input-group-btn">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button class="btn btn-default" type="submit">ค้นหา</button>
                       </span>
                     </div>

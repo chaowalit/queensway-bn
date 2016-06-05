@@ -19,6 +19,7 @@ Route::get('/search_customer', function () {
     return view('form_search_customer');
 });
 Route::get('result_search_customer', 'HomeController@result_search_customer');
+Route::post('list_search_customer', 'HomeController@list_search_customer');
 
 Route::auth();
 
