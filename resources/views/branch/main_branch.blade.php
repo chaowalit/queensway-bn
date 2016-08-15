@@ -83,6 +83,7 @@
                                 <input type="hidden" name="url_branch" value="{{ $val['url_branch'] }}">
                                 <input type="hidden" name="comment" value="{{ $val['comment'] }}">
                                 <input type="hidden" name="email" value="{{ $val['email'] }}">
+                                <input type="hidden" name="set_password_transection" value="{{ $val['set_password_transection'] }}">
                                 {!! csrf_field() !!}
                                 <button class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> จัดการข้อมูล </button>
                             </form>

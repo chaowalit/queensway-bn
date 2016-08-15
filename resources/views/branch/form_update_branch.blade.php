@@ -44,7 +44,8 @@
                   </ul>
                   <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-						<?php //dump($branch); ?>
+						<?php //dump($branch); 
+            ?>
 						<p style="text-align: center;">กรุณากรอกข้อมูลในช่องที่มี * ให้ครบทุกช่อง</p>
 						<form action="{{ url('branch/update_edit_branch') }}" method="POST" id="form_update_branch" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
 							<div class="form-group">
@@ -152,6 +153,17 @@
                                 </div>
                               </div>
                               <div class="ln_solid"></div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Password remove course detail</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                  <input type="text" class="form-control has-feedback-left" name="set_password_transection" 
+                                  id="set_password_transection" value="{{ $branch['set_password_transection'] }}" placeholder="">
+                                  <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+
                               <div class="form-group">
                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
 

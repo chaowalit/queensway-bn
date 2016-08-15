@@ -82,6 +82,7 @@ class BranchController extends QwcAdminController{
 			"id" => $request->get('id', ''),
 			"email" => $request->get('email', ''),
 			"new_password" => $request->get('new_password', ''),
+			"set_password_transection" => $request->get('set_password_transection', '0'),
 		];
 		$url = $request->get('url_branch', '') . "public/api/v1/changePasswordCompany";
 		$result = curlPost($url, $param);
