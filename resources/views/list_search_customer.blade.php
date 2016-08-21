@@ -1,4 +1,5 @@
-<?php dump($result); ?>
+<?php //dump($result); 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,7 +39,8 @@
 				  </div>
 				  <div class="col-md-8 col-sm-8 col-xs-8">
 				  <!-- start accordion -->
-                  <?php //dump($result); ?>
+                  <?php //dump($result); 
+                  ?>
 				  <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                     @foreach($result as $key => $val)
 					<div class="panel">
