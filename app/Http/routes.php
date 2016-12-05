@@ -29,3 +29,8 @@ Route::get('branch', 'BranchController@index');
 Route::post('branch/show_edit_branch', 'BranchController@show_edit_branch');
 Route::post('branch/update_edit_branch', 'BranchController@update_edit_branch');
 Route::post('branch/update_login_branch', 'BranchController@update_login_branch');
+
+Route::get('report/month', 'ReportController@show_month');
+Route::get('report/year', 'ReportController@show_year');
+Route::post('report/gen_report_month', 'ReportController@gen_report_month');
+Route::post('report/gen_report_year', 'ReportController@gen_report_year');

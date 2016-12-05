@@ -57,12 +57,14 @@
                         </ul>
                     </li>
                     <li class=""><a><i class="fa fa-table"></i> รายงาน <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu" style="display: none;">
-                          <li><a href="#">ออกรายงานรายสัปดาห์</a>
+                        <ul class="nav child_menu" style="display: {{ ($menu_nav == 'report')? 'block':'none' }};">
+                          <!-- <li><a href="#">ออกรายงานรายคน</a>
+                          </li> -->
+                          <li class="{{ ($menu_nav == 'report' && $menu_level == '1')? 'current-page':'' }}">
+                            <a href="{{ url('report/month') }}">ออกรายงานรายเดือน</a>
                           </li>
-                          <li><a href="#">ออกรายงานรายเดือน</a>
-                          </li>
-                          <li><a href="#">ออกรายงานรายปี</a>
+                          <li class="{{ ($menu_nav == 'report' && $menu_level == '2')? 'current-page':'' }}">
+                            <a href="{{ url('report/year') }}">ออกรายงานรายปี</a>
                           </li>
                         </ul>
                     </li>
